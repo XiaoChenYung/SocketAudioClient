@@ -67,7 +67,50 @@
         printf("\n connetc() error ");
         // exit(1);
     }
+    
+    
+    
+    
+    [self startListenAndNewThread];
+
 }
+
+// 在新线程中监听客户端
+-(void) startListenAndNewThread{
+    [NSThread detachNewThreadSelector:@selector(initServer)
+                             toTarget:self withObject:nil];
+}
+
+-(void)initServer {
+    char buffer[BUFFER_SIZE];
+    int result = recv(toServerSocket, &buffer, BUFFER_SIZE, 0);
+    NSString * mystring = [NSString stringWithUTF8String:buffer];
+    dispatch_async(dispatch_get_main_queue(), ^{
+        self.msgTextField.text = mystring;
+    });
+    
+    
+}
+
+//// 读客户端数据
+//-(void) readData:(NSNumber*) clientSocket{
+//    char buffer[BUFFER_SIZE];
+//    int intSocket = [clientSocket intValue];
+//    
+//    while(buffer[0] != '-'){
+//        
+//        bzero(buffer,BUFFER_SIZE);
+//        //接收客户端发送来的信息到buffer中
+//        recv(intSocket,buffer,BUFFER_SIZE,0);
+//        NSString * mystring = [NSString stringWithUTF8String:buffer];
+//        self.msgTextField.text = mystring;
+//        printf("client:%s\n",buffer);
+//    }
+//    //关闭与客户端的连接
+//    printf("client:close\n");
+//    close(intSocket);
+//    
+//}
 
 - (void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event {
     [self.ipAddress resignFirstResponder];
@@ -94,7 +137,6 @@
     
     //发送buffer中的字符串到new_server_socket,实际是给客户端
     send(toServerSocket,mychar,1024,0);
-    
 }
 
 - (void)didReceiveMemoryWarning {
