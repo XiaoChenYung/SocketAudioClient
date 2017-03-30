@@ -31,7 +31,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    _play = [[Play alloc] init];
+    
 
     // Do any additional setup after loading the view, typically from a nib.
 }
@@ -85,7 +85,7 @@
                              toTarget:self withObject:nil];
 }
 - (IBAction)play:(UIButton *)sender {
-    [self.play play];
+    self.play  = [[Play alloc] init];
 }
 
 -(void)initServer {
@@ -95,7 +95,7 @@
     while (1) {
         recv(toServerSocket, buffer, 10240,0);
         NSData *data = [NSData dataWithBytes:buffer length:10240];
-        [self.play Play:data Length:8192];
+        [self.play appendData:data];
     }
     
     
