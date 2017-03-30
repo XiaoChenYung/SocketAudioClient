@@ -16,7 +16,7 @@
 #include<netdb.h>
 #import "Play.h"
 
-#define BUFFER_SIZE 256
+//#define BUFFER_SIZE 256
 
 @interface ViewController (){
     int toServerSocket;
@@ -31,7 +31,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
+    self.play  = [[Play alloc] init];
 
     // Do any additional setup after loading the view, typically from a nib.
 }
@@ -85,7 +85,7 @@
                              toTarget:self withObject:nil];
 }
 - (IBAction)play:(UIButton *)sender {
-    self.play  = [[Play alloc] init];
+    [self.play play];
 }
 
 -(void)initServer {
@@ -148,8 +148,8 @@
     strcpy(mychar,(char *)[message UTF8String]);
 
     
-    char buffer[BUFFER_SIZE];
-    bzero(buffer, BUFFER_SIZE);
+//    char buffer[BUFFER_SIZE];
+//    bzero(buffer, BUFFER_SIZE);
     //Byte b;
 //    const char* talkData =
 //    [ message cStringUsingEncoding:NSUTF8StringEncoding];

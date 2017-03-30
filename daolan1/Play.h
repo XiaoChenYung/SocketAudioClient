@@ -27,4 +27,6 @@
 
 - (void)appendData:(NSData *)data;
 
+- (void)play;
+
 @end
