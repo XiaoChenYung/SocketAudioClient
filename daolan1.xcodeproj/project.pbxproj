@@ -7,15 +7,19 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		923DD13F1E84D194005E3496 /* CoreFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 923DD13E1E84D194005E3496 /* CoreFoundation.framework */; };
 		928134981E79325300FC2809 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 928134971E79325300FC2809 /* main.m */; };
 		9281349B1E79325300FC2809 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 9281349A1E79325300FC2809 /* AppDelegate.m */; };
 		9281349E1E79325300FC2809 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9281349D1E79325300FC2809 /* ViewController.m */; };
 		928134A11E79325300FC2809 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9281349F1E79325300FC2809 /* Main.storyboard */; };
 		928134A31E79325300FC2809 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 928134A21E79325300FC2809 /* Assets.xcassets */; };
 		928134A61E79325300FC2809 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 928134A41E79325300FC2809 /* LaunchScreen.storyboard */; };
+		92DFACCE1E7FC9AE007ABE05 /* Play.mm in Sources */ = {isa = PBXBuildFile; fileRef = 92DFACCD1E7FC9AE007ABE05 /* Play.mm */; };
+		92DFACD11E7FCA97007ABE05 /* AudioConstant.m in Sources */ = {isa = PBXBuildFile; fileRef = 92DFACD01E7FCA97007ABE05 /* AudioConstant.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		923DD13E1E84D194005E3496 /* CoreFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreFoundation.framework; path = System/Library/Frameworks/CoreFoundation.framework; sourceTree = SDKROOT; };
 		928134931E79325300FC2809 /* daolan1.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = daolan1.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		928134971E79325300FC2809 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		928134991E79325300FC2809 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -26,6 +30,10 @@
 		928134A21E79325300FC2809 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		928134A51E79325300FC2809 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		928134A71E79325300FC2809 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		92DFACCC1E7FC9AE007ABE05 /* Play.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Play.h; sourceTree = "<group>"; };
+		92DFACCD1E7FC9AE007ABE05 /* Play.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = Play.mm; sourceTree = "<group>"; };
+		92DFACCF1E7FCA97007ABE05 /* AudioConstant.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AudioConstant.h; sourceTree = "<group>"; };
+		92DFACD01E7FCA97007ABE05 /* AudioConstant.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AudioConstant.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -33,17 +41,27 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				923DD13F1E84D194005E3496 /* CoreFoundation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		923DD13D1E84D193005E3496 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				923DD13E1E84D194005E3496 /* CoreFoundation.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		9281348A1E79325300FC2809 = {
 			isa = PBXGroup;
 			children = (
 				928134951E79325300FC2809 /* daolan1 */,
 				928134941E79325300FC2809 /* Products */,
+				923DD13D1E84D193005E3496 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -62,6 +80,10 @@
 				9281349A1E79325300FC2809 /* AppDelegate.m */,
 				9281349C1E79325300FC2809 /* ViewController.h */,
 				9281349D1E79325300FC2809 /* ViewController.m */,
+				92DFACCF1E7FCA97007ABE05 /* AudioConstant.h */,
+				92DFACD01E7FCA97007ABE05 /* AudioConstant.m */,
+				92DFACCC1E7FC9AE007ABE05 /* Play.h */,
+				92DFACCD1E7FC9AE007ABE05 /* Play.mm */,
 				9281349F1E79325300FC2809 /* Main.storyboard */,
 				928134A21E79325300FC2809 /* Assets.xcassets */,
 				928134A41E79325300FC2809 /* LaunchScreen.storyboard */,
@@ -154,6 +176,8 @@
 				9281349E1E79325300FC2809 /* ViewController.m in Sources */,
 				9281349B1E79325300FC2809 /* AppDelegate.m in Sources */,
 				928134981E79325300FC2809 /* main.m in Sources */,
+				92DFACCE1E7FC9AE007ABE05 /* Play.mm in Sources */,
+				92DFACD11E7FCA97007ABE05 /* AudioConstant.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -272,7 +296,12 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = YUQB2X8V9P;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/daolan1",
+				);
 				INFOPLIST_FILE = daolan1/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.touchmedia.daolan;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -286,7 +315,12 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = YUQB2X8V9P;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/daolan1",
+				);
 				INFOPLIST_FILE = daolan1/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.touchmedia.daolan;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -314,6 +348,7 @@
 				928134AC1E79325300FC2809 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

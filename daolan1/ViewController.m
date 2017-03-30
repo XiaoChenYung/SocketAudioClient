@@ -14,7 +14,9 @@
 #include<sys/socket.h>
 #include<netinet/in.h>
 #include<netdb.h>
-#define BUFFER_SIZE 1024
+#import "Play.h"
+
+#define BUFFER_SIZE 256
 
 @interface ViewController (){
     int toServerSocket;
@@ -22,13 +24,15 @@
 @property (weak, nonatomic) IBOutlet UITextField *ipAddress;
 @property (weak, nonatomic) IBOutlet UITextField *portAddress;
 @property (weak, nonatomic) IBOutlet UITextField *msgTextField;
-
+@property (strong, nonatomic) Play *play;
 @end
 
 @implementation ViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    _play = [[Play alloc] init];
+
     // Do any additional setup after loading the view, typically from a nib.
 }
 
@@ -80,14 +84,29 @@
     [NSThread detachNewThreadSelector:@selector(initServer)
                              toTarget:self withObject:nil];
 }
+- (IBAction)play:(UIButton *)sender {
+    [self.play play];
+}
 
 -(void)initServer {
-    char buffer[BUFFER_SIZE];
-    int result = recv(toServerSocket, &buffer, BUFFER_SIZE, 0);
-    NSString * mystring = [NSString stringWithUTF8String:buffer];
-    dispatch_async(dispatch_get_main_queue(), ^{
-        self.msgTextField.text = mystring;
-    });
+    char buffer[10240];
+//    [player start];
+    
+    while (1) {
+        recv(toServerSocket, buffer, 10240,0);
+        NSData *data = [NSData dataWithBytes:buffer length:10240];
+        [self.play Play:data Length:8192];
+    }
+    
+    
+
+    
+//    [player start];
+    
+//    NSString * mystring = [NSString stringWithUTF8String:buffer];
+//    dispatch_async(dispatch_get_main_queue(), ^{
+//        self.msgTextField.text = mystring;
+//    });
     
     
 }
@@ -125,7 +144,7 @@
 -(void) sendToServer:(NSString*) message{
     NSLog(@"send message to server...");
     
-    char mychar[1024];
+    char mychar[10240];
     strcpy(mychar,(char *)[message UTF8String]);
 
     
