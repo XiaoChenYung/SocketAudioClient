@@ -45,12 +45,22 @@ static void BufferCallback(void *inUserData,AudioQueueRef inAQ,AudioQueueBufferR
 //    const void* data = [self.tempData bytes];
     if(audioDataIndex + EVERY_READ_LENGTH <= self.tempData.length)
     {
-//        NSData *tempData = [self.tempData subdataWithRange:NSMakeRange(audioDataIndex, EVERY_READ_LENGTH)];
-        char tempBuffer[EVERY_READ_LENGTH];
-        [self.tempData getBytes:tempBuffer range:NSMakeRange(audioDataIndex, EVERY_READ_LENGTH)];
+        NSData *thisTempData = [self.tempData subdataWithRange:NSMakeRange(audioDataIndex, EVERY_READ_LENGTH)];
+//        char tempBuffer[EVERY_READ_LENGTH];
+//        [self.tempData getBytes:tempBuffer range:NSMakeRange(audioDataIndex, EVERY_READ_LENGTH)];
 //        memcpy(buffer->mAudioData, [tempData bytes], EVERY_READ_LENGTH);
-        memcpy(buffer->mAudioData, tempBuffer, EVERY_READ_LENGTH);
+        memcpy(buffer->mAudioData, [thisTempData bytes], EVERY_READ_LENGTH);
         audioDataIndex += EVERY_READ_LENGTH;
+        buffer->mAudioDataByteSize =EVERY_READ_LENGTH;
+        AudioQueueEnqueueBuffer(queue, buffer, 0, NULL);
+    } else {
+//        NSAssert(false, @"错误");
+        char tempBuffer[EVERY_READ_LENGTH] = {0};
+//        NSData *emptyData = [NSData dataWithBytes:tempBuffer length:10240];
+//        [emptyData getBytes:tempBuffer range:NSMakeRange(0, EVERY_READ_LENGTH)];
+//                memcpy(buffer->mAudioData, [tempData bytes], EVERY_READ_LENGTH);
+        memcpy(buffer->mAudioData, tempBuffer, EVERY_READ_LENGTH);
+//        audioDataIndex += EVERY_READ_LENGTH;
         buffer->mAudioDataByteSize =EVERY_READ_LENGTH;
         AudioQueueEnqueueBuffer(queue, buffer, 0, NULL);
     }
@@ -136,8 +146,8 @@ static void BufferCallback(void *inUserData,AudioQueueRef inAQ,AudioQueueBufferR
 - (void)appendData:(NSData *)data {
     
     [self.tempData appendData:data];
-    NSLog(@"%@",@(data.length));
-    if (self.tempData.length >= 100000) {
+//    NSLog(@"%@",@(data.length));
+    if (self.tempData.length >= 50000) {
         if (isStart == false) {
             [self initAudio];
             isStart = true;

@@ -94,7 +94,7 @@
     
     while (1) {
         int count = recv(toServerSocket, buffer, 8000,0);
-        NSLog(@"数量%d",count);
+//        NSLog(@"数量%d",count);
         NSData *data = [NSData dataWithBytes:buffer length:count];
         [self.play appendData:data];
     }
