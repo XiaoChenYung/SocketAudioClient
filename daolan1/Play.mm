@@ -134,22 +134,30 @@ static void BufferCallback(void *inUserData,AudioQueueRef inAQ,AudioQueueBufferR
 }
 
 - (void)appendData:(NSData *)data {
-//    if (isStart == false) {
-        [self.tempData appendData:data];
-        NSLog(@"%@",@(data.length));
-        if (self.tempData.length >= 20480) {
-            if (isStart == false) {
-                [self initAudio];
-                isStart = true;
-            }
+    
+    [self.tempData appendData:data];
+    NSLog(@"%@",@(data.length));
+    if (self.tempData.length >= 100000) {
+        if (isStart == false) {
+            [self initAudio];
+            isStart = true;
         }
+    }
+    
+    
+//    if (isStart == false) {
+//    [self.tempData appendData:data];
+//    NSLog(@"%@",@(data.length));
 //    }
     
     
 }
 
 - (void)play {
-    
+//            if (isStart == false) {
+//                [self initAudio];
+//                isStart = true;
+//            }
 }
 
 @end

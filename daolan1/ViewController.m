@@ -89,12 +89,13 @@
 }
 
 -(void)initServer {
-    char buffer[10240];
+    char buffer[8000];
 //    [player start];
     
     while (1) {
-        recv(toServerSocket, buffer, 10240,0);
-        NSData *data = [NSData dataWithBytes:buffer length:10240];
+        int count = recv(toServerSocket, buffer, 8000,0);
+        NSLog(@"数量%d",count);
+        NSData *data = [NSData dataWithBytes:buffer length:count];
         [self.play appendData:data];
     }
     
