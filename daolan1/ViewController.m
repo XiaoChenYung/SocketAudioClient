@@ -58,7 +58,7 @@
         printf("gethostbyname error/n");
         //exit(1);
     }
-    if((toServerSocket = socket(AF_INET, SOCK_STREAM, IPPROTO_TCP)) == -1)
+    if((toServerSocket = socket(AF_INET, SOCK_STREAM, 0)) == -1)
     {
         printf("socket() error /n");
         //exit(1);
