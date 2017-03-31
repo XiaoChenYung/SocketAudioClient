@@ -32,7 +32,7 @@
 //回调函数(Callback)的实现
 static void BufferCallback(void *inUserData,AudioQueueRef inAQ,AudioQueueBufferRef buffer){
     
-    NSLog(@"processAudioData :%u", (unsigned int)buffer->mAudioDataByteSize);
+//    NSLog(@"processAudioData :%u", (unsigned int)buffer->mAudioDataByteSize);
     
     Play* player=(__bridge Play*)inUserData;
     
@@ -146,7 +146,7 @@ static void BufferCallback(void *inUserData,AudioQueueRef inAQ,AudioQueueBufferR
 - (void)appendData:(NSData *)data {
     
     [self.tempData appendData:data];
-//    NSLog(@"%@",@(data.length));
+//    NSLog(@"%@",@(self.tempData.length));
     if (self.tempData.length >= 50000) {
         if (isStart == false) {
             [self initAudio];

@@ -20,7 +20,7 @@
 
 
 #define QUEUE_BUFFER_SIZE  2//队列缓冲个数
-#define EVERY_READ_LENGTH  10240 //每次从文件读取的长度
+#define EVERY_READ_LENGTH  1024 //每次从文件读取的长度
 #define MIN_SIZE_PER_FRAME 10240 //每侦最小数据长度
 @interface AudioConstant : NSObject
 

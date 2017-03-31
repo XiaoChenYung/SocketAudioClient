@@ -32,6 +32,9 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.play  = [[Play alloc] init];
+    
+    //    客户端套接字，用于收发消息
+//    AsyncSocket *_tcpSocket;
 
     // Do any additional setup after loading the view, typically from a nib.
 }
@@ -55,7 +58,7 @@
         printf("gethostbyname error/n");
         //exit(1);
     }
-    if((toServerSocket = socket(AF_INET, SOCK_STREAM, 0)) == -1)
+    if((toServerSocket = socket(AF_INET, SOCK_STREAM, IPPROTO_TCP)) == -1)
     {
         printf("socket() error /n");
         //exit(1);
@@ -89,12 +92,12 @@
 }
 
 -(void)initServer {
-    char buffer[8000];
+    char buffer[1000];
 //    [player start];
     
     while (1) {
-        int count = recv(toServerSocket, buffer, 8000,0);
-//        NSLog(@"数量%d",count);
+        long count = recv(toServerSocket, buffer, 1000, 0);
+        NSLog(@"数量%zd",count);
         NSData *data = [NSData dataWithBytes:buffer length:count];
         [self.play appendData:data];
     }
